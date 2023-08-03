@@ -11,13 +11,14 @@ services:
     container_name: enphasecollector
     hostname: 'enphasecollector'
     restart: unless-stopped
-    image: dlmcpaul/enphasecollector-arm:latest
+    image: dlmcpaul/enphasecollector-arm:experimental
     ports:
       - 8080:8080
     networks:
       - back-tier
     environment:
       ENVOY_CONTROLLER_HOST: '{{ enphasecollector_host }}'
+      ENVOY_CONTROLLER_PORT: '443'
       ENVOY_ENPHASEWEBUSER: '{{ enphasecollector_enphase_username }}'
       ENVOY_ENPHASEWEBPASSWORD: '{{ enphasecollector_enphase_password }}'
 {% if domain_name_enable and domain_name and domain_enphasecollector %}
