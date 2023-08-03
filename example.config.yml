@@ -62,4 +62,6 @@ unpoller_unifi_admin_password: "change-this-password"
 # Enable collection for enphase collector.
 enphasecollector_enable: false
 enphasecollector_host: "envoy.local"
+enphasecollector_enphase_username: "enphase website user id" # see notes on https://github.com/dlmcpaul/EnphaseCollector
+enphasecollector_enphase_password: "enphase website password"
 domain_enphasecollector: 'enphase' # to access enphase collector via http://enphase.home.local

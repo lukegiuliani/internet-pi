@@ -18,6 +18,8 @@ services:
       - back-tier
     environment:
       ENVOY_CONTROLLER_HOST: '{{ enphasecollector_host }}'
+      ENVOY_ENPHASEWEBUSER: '{{ enphasecollector_enphase_username }}'
+      ENVOY_ENPHASEWEBPASSWORD: '{{ enphasecollector_enphase_password }}'
 {% if domain_name_enable and domain_name and domain_enphasecollector %}
       VIRTUAL_HOST: {{ domain_enphasecollector }}.{{ domain_name }}
       VIRTUAL_PORT: 8080
