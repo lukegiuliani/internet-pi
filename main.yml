@@ -54,3 +54,7 @@
     - name: Set up Unpoller Monitoring.
       ansible.builtin.import_tasks: tasks/unpoller.yml
       when: unpoller_enable
+
+    - name: Set up Enphase Collector Monitoring.
+      ansible.builtin.import_tasks: tasks/enphasecollector.yml
+      when: enphasecollector_enable

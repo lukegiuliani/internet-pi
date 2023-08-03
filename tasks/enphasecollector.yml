@@ -1,0 +1,28 @@
+---
+- name: Ensure enphasecollector directory exists.
+  file:
+    path: "{{ config_dir }}/enphasecollector-exporter"
+    state: directory
+    mode: 0755
+  become: false
+
+- name: Copy enphasecollector docker-compose template to Pi.
+  ansible.builtin.template:
+    src: templates/enphasecollector-docker-compose.yml.j2
+    dest: "{{ config_dir }}/enphasecollector-exporter/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart enphasecollector-exporter
+
+- name: Ensure enphasecollector Prometheus exporter is running.
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/enphasecollector-exporter/"
+    build: false
+  become: false
+
+- name: Copy enphasecollector dashboard config to grafana.
+  ansible.builtin.copy:
+    src: files/unpoller-overview.json
+    dest: "{{ config_dir }}/internet-monitoring/grafana/provisioning/dashboards/"
+    mode: 0644
+  become: false

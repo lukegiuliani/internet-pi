@@ -88,6 +88,14 @@ scrape_configs:
     - targets: ['unpoller:9130']
 {% endif %}
 
+{% if enphasecollector_enable %}
+  - job_name: 'enphasecollector'
+    scrape_interval: 30s
+    metrics_path: /solar/actuator/prometheus
+    static_configs:
+    - targets: ['enphasecollector:8080']
+{% endif %}
+
 {% filter indent(width=2,first=True) %}
 {{ prometheus_extra_scrape_configs }}
 {% endfilter %}

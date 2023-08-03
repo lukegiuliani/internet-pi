@@ -58,3 +58,8 @@ unpoller_unifi_url: https://192.168.1.1
 # https://unpoller.com/docs/install/gettingstarted#configuring-the-controller
 unpoller_unifi_admin_username: "unifipoller"
 unpoller_unifi_admin_password: "change-this-password"
+
+# Enable collection for enphase collector.
+enphasecollector_enable: false
+enphasecollector_host: "envoy.local"
+domain_enphasecollector: 'enphase' # to access enphase collector via http://enphase.home.local
